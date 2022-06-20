@@ -1,0 +1,90 @@
+# Protocol Registry
+
+```Address: s55qq-oqaaa-aaaaa-aaakq-cai```
+
+```
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+░░░░░░░░░░░░░░░░░░░░░░░█████╗░██╗░░░░░░█████╗░░██████╗██╗░░██╗░█████╗░░░░░░░░░░░░░░░░░
+░░░░░░░░░░░░░░░░░░░░░░██╔══██╗██║░░░░░██╔══██╗██╔════╝██║░██╔╝██╔══██╗░░░░░░░░░░░░░░░░
+░░░░░░░░░░░░░░░░░░░░░░███████║██║░░░░░███████║╚█████╗░█████═╝░███████║░░░░░░░░░░░░░░░░
+░░░░░░░░░░░░░░░░░░░░░░██╔══██║██║░░░░░██╔══██║░╚═══██╗██╔═██╗░██╔══██║░░░░░░░░░░░░░░░░
+░░░░░░░░░░░░░░░░░░░░░░██║░░██║███████╗██║░░██║██████╔╝██║░╚██╗██║░░██║░░░░░░░░░░░░░░░░
+░░░░░░░░░░░░░░░░░░░░░░╚═╝░░╚═╝╚══════╝╚═╝░░╚═╝╚═════╝░╚═╝░░╚═╝╚═╝░░╚═╝░░░░░░░░░░░░░░░░
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+
+
+
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+░░░░                                                                               ░░░░
+░░░░ █▀█ █▀█ █▀█ ▀█▀ █▀█ █▀▀ █▀█ █    █▀█ █▀▀ █▀▀ █ █▀ ▀█▀ █▀▀ █▀█ █▄█  ░░░░
+░░░░ █▀▀ █▀▄ █▄█  █  █▄█ █▄▄ █▄█ █▄▄  █▀▄ ██▄ █▄█ █ ▄█  █  ██▄ █▀▄  █   ░░░░
+░░░░                                                                               ░░░░ 
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+
+```
+
+
+# IDL
+
+
+```
+type VerifiedProtocol = 
+ record {
+   verified_at: Time;
+   verified_by: vec principal;
+ };
+type TokenId = nat;
+type Time = int;
+type PublishProtocol = record {address: principal;};
+type ProtocolVerificationStatus = 
+ variant {
+   Draft;
+   Final;
+   Finished: VerifiedProtocol;
+   Review;
+   Stagnant;
+ };
+type ProtocolLinks = 
+ record {
+   discord: text;
+   github: text;
+   twitter: text;
+   website: text;
+ };
+type Protocol = 
+ record {
+   address: principal;
+   avatar: text;
+   category: text;
+   created_at: Time;
+   created_by: vec principal;
+   description: text;
+   id: TokenId;
+   meta_sentences: vec text;
+   name: text;
+   recommanded_vessels: vec principal;
+   social: ProtocolLinks;
+   tags: vec text;
+   title: text;
+   updated_at: Time;
+   verified: ProtocolVerificationStatus;
+   version: float64;
+ };
+service : {
+  getProtocolByName: (text) -> (opt Protocol) query;
+  getProtocolByPrincipal: (principal) -> (opt Protocol) query;
+  getProtocolByTokenID: (TokenId) -> (opt Protocol) query;
+  getProtocols: () -> (vec Protocol) query;
+  pickProtocol: (TokenId) -> (Protocol);
+  protocolExists: (principal) -> (bool) query;
+  publishProtocol: (PublishProtocol) -> (opt Protocol);
+}
+
+```
+
+
+### getProtocols()
+
+Returns array of indexed protocols.
+<br />
+**@returns** array of indexed protocols.

@@ -1,12 +1,12 @@
 export default {
-  github: 'https://github.com/shuding/nextra',
-  docsRepositoryBase: 'https://github.com/shuding/nextra/blob/master',
-  titleSuffix: ' – Nextra',
+  github: 'https://github.com/alaska-protocol/alaska-protocol',
+  docsRepositoryBase: 'https://github.com/alaska-protocol/alaska-protocol/blob/master',
+  titleSuffix: ' – Alaska',
   logo: (
     <>
-      <span className="mr-2 font-extrabold hidden md:inline">Nextra</span>
+      <span className="mr-2 font-extrabold hidden md:inline">Alaska</span>
       <span className="text-gray-600 font-normal hidden md:inline">
-        The Next.js Static Site Generator
+        Idea for a Next evolution of Collaborative Consumption & Peer-to-Peer sharing using Internet Computer blockchain.
       </span>
     </>
   ),
@@ -62,6 +62,7 @@ export default {
   nextLinks: true,
   footer: true,
   footerEditLink: 'Edit this page on GitHub',
-  footerText: <>MIT {new Date().getFullYear()} © Nextra.</>,
+  // footerText: <>MIT {new Date().getFullYear()} © Alaska Protocol.</>,
+  footerText: <>Alaska Protocol.</>,
   unstable_faviconGlyph: '👋',
 }
