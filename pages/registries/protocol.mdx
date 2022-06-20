@@ -13,11 +13,10 @@
 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
 
-
 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 ░░░░                                                                               ░░░░
-░░░░ █▀█ █▀█ █▀█ ▀█▀ █▀█ █▀▀ █▀█ █    █▀█ █▀▀ █▀▀ █ █▀ ▀█▀ █▀▀ █▀█ █▄█  ░░░░
-░░░░ █▀▀ █▀▄ █▄█  █  █▄█ █▄▄ █▄█ █▄▄  █▀▄ ██▄ █▄█ █ ▄█  █  ██▄ █▀▄  █   ░░░░
+░░░░ █▀█ █▀█ █▀█ ▀█▀ █▀█ █▀▀ █▀█ █    █▀█ █▀▀ █▀▀ █ █▀ ▀█▀ █▀▀ █▀█ █▄█             ░░░░
+░░░░ █▀▀ █▀▄ █▄█  █  █▄█ █▄▄ █▄█ █▄▄  █▀▄ ██▄ █▄█ █ ▄█  █  ██▄ █▀▄  █              ░░░░
 ░░░░                                                                               ░░░░ 
 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
@@ -83,8 +82,47 @@ service : {
 ```
 
 
-### getProtocols()
+## Getters
 
-Returns array of indexed protocols.
-<br />
-**@returns** array of indexed protocols.
+## `getProtocols` 
+Returns array of indexed protocols.<br/>
+**@returns**    `[T.Protocol]`<br/>
+**@parameters** `()`
+
+
+## `getProtocolByTokenID` 
+Returns array of indexed protocols.<br/>
+**@returns**    `?T.Protocol`<br/>
+**@parameters** `(id: T.TokenId)`
+
+## `getProtocolByName` 
+Returns array of indexed protocols.<br/>
+**@returns**    `?T.Protocol`<br/>
+**@parameters** `(name: Text)`
+
+## `getProtocolByPrincipal` 
+Returns array of indexed protocols.<br/>
+**@returns**    `?T.Protocol`<br/>
+**@parameters** `(p: Principal)`
+
+## `protocolExists` 
+Returns array of indexed protocols.<br/>
+**@returns**    `Bool`<br/>
+**@parameters** `(p: Principal)`
+
+## `pickProtocol` 
+Returns array of indexed protocols.<br/>
+**@returns**    `T.Protocol`<br/>
+**@parameters** `(id: T.TokenId)`
+
+## `publishProtocol` 
+Returns array of indexed protocols.<br/>
+**@returns**    `?T.Protocol`<br/>
+**@parameters** `(p: T.PublishProtocol)`
+
+## Setters
+
+## `publishProtocol` 
+Returns array of indexed protocols.<br/>
+**@returns**    `?T.Protocol`<br/>
+**@parameters** `(p: T.PublishProtocol)`

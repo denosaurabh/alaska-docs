@@ -1,0 +1,143 @@
+# Profile Registry
+
+`Address: [-------------]`
+
+```txt
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+░░░░░░░░░░░░░░░░░░░░░░░█████╗░██╗░░░░░░█████╗░░██████╗██╗░░██╗░█████╗░░░░░░░░░░░░░░░░░
+░░░░░░░░░░░░░░░░░░░░░░██╔══██╗██║░░░░░██╔══██╗██╔════╝██║░██╔╝██╔══██╗░░░░░░░░░░░░░░░░
+░░░░░░░░░░░░░░░░░░░░░░███████║██║░░░░░███████║╚█████╗░█████═╝░███████║░░░░░░░░░░░░░░░░
+░░░░░░░░░░░░░░░░░░░░░░██╔══██║██║░░░░░██╔══██║░╚═══██╗██╔═██╗░██╔══██║░░░░░░░░░░░░░░░░
+░░░░░░░░░░░░░░░░░░░░░░██║░░██║███████╗██║░░██║██████╔╝██║░╚██╗██║░░██║░░░░░░░░░░░░░░░░
+░░░░░░░░░░░░░░░░░░░░░░╚═╝░░╚═╝╚══════╝╚═╝░░╚═╝╚═════╝░╚═╝░░╚═╝╚═╝░░╚═╝░░░░░░░░░░░░░░░░
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+
+
+
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+░░░░                                                                            ░░░░░░
+░░░░ █▀█ █▀█ █▀█ █▀▀ █ █░░ █▀▀   █▀█ █▀▀ █▀▀ █ █▀ ▀█▀ █▀█ █▄█                   ░░░░░░
+░░░░ █▀▀ █▀▄ █▄█ █▀░ █ █▄▄ ██▄   █▀▄ ██▄ █▄█ █ ▄█ ░█░ █▀▄ ░█░                   ░░░░░░
+░░░░                                                                            ░░░░░░
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+
+```
+
+
+# IDL
+
+```txt
+type UpdateProfile = 
+ record {
+   avatar: text;
+   name: text;
+   social: ProfileSocial;
+ };
+type Time = int;
+type ProfileSocial = 
+ record {
+   github: text;
+   twitter: text;
+   youtube: text;
+ };
+type ProfileRegistory = 
+ service {
+   addCreatedItem: (principal, Item) -> ();
+   createProfile: (CreateProfile) -> (ProfileID);
+   deployToAlaska: () -> ();
+   getOrCreateProfileByPrincipal: (principal) -> (opt Profile);
+   getProfile: (ProfileID) -> (opt Profile) query;
+   getProfileByPrincipal: (principal) -> (opt Profile) query;
+   getProfiles: () -> (vec Profile) query;
+   profileExists: (principal) -> (bool) query;
+   transferOwnedItem: (principal, principal, Item) -> ();
+   updateProfile: (UpdateProfile) -> ();
+   whoami: () -> (principal);
+ };
+type ProfileID = nat;
+type Profile = 
+ record {
+   avatar: text;
+   borrowed_items: vec Item;
+   created_at: Time;
+   created_items: vec Item;
+   id: nat;
+   lended_items: vec Item;
+   liked_items: vec Item;
+   name: text;
+   owned_items: vec Item;
+   "principal": principal;
+   social: ProfileSocial;
+   updated_at: Time;
+ };
+type Item = 
+ record {
+   item_id: nat;
+   vessel_id: nat;
+ };
+type CreateProfile = 
+ record {
+   avatar: text;
+   name: text;
+   "principal": principal;
+   social: ProfileSocial;
+ };
+service : (text) -> ProfileRegistory
+
+```
+
+## Getters
+
+## `getProfiles`
+[-----------------]<br/>
+**@returns**    `T.Profile` <br/>
+**@parameters** `()`
+
+## `getProfile` 
+[-----------------]<br/>
+**@returns**    `?T.Profile` <br/>
+**@parameters** `(id: T.ProfileID)`
+
+
+## `getProfileByPrincipal` 
+[-----------------]<br/>
+**@returns**    `?T.Profile` <br/>
+**@parameters** `(p: Principal)`
+
+
+## Setters
+
+## `createProfile`
+[-----------------]<br/>
+**@returns**    `T.ProfileID` <br/>
+**@parameters** `(profile: T.CreateProfile)`
+
+## `updateProfile`
+
+[-----------------]<br/>
+**@returns**    `()` <br/>
+**@parameters** `(updated_data: T.UpdateProfile)`
+
+## `addCreatedItem`
+
+[-----------------]<br/>
+**@returns**    `()` <br/>
+**@parameters** `(principal: Principal, item: T.Item)`
+
+## `transferOwnedItem`
+
+[-----------------]<br/>
+**  @returns**    `()` <br/>
+**@parameters** `(from: Principal, to: Principal, item: T.Item)`
+
+## `profileExists`
+
+[-----------------]<br/>
+**@returns**    `(Bool)` <br/>
+**@parameters** `(p: Principal)`
+
+## `getOrCreateProfileByPrincipal`
+[-----------------]<br/>
+**@returns**    `?T.Profile` <br/>
+**@parameters** `(p: Principal)`
+

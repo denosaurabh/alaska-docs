@@ -1,3 +1,6 @@
 {
-  "protocol": "Protocol"
+  "protocol": "Protocol Registry",
+  "vessel": "Vessel Registry",
+  "profile" : "Profile",
+  "lending" : "Lending"
 }

@@ -1,0 +1,130 @@
+# Indexer
+
+`Address: [-------------]`
+
+```txt
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+░░░░░░░░░░░░░░░░░░░░░░░█████╗░██╗░░░░░░█████╗░░██████╗██╗░░██╗░█████╗░░░░░░░░░░░░░░░░░
+░░░░░░░░░░░░░░░░░░░░░░██╔══██╗██║░░░░░██╔══██╗██╔════╝██║░██╔╝██╔══██╗░░░░░░░░░░░░░░░░
+░░░░░░░░░░░░░░░░░░░░░░███████║██║░░░░░███████║╚█████╗░█████═╝░███████║░░░░░░░░░░░░░░░░
+░░░░░░░░░░░░░░░░░░░░░░██╔══██║██║░░░░░██╔══██║░╚═══██╗██╔═██╗░██╔══██║░░░░░░░░░░░░░░░░
+░░░░░░░░░░░░░░░░░░░░░░██║░░██║███████╗██║░░██║██████╔╝██║░╚██╗██║░░██║░░░░░░░░░░░░░░░░
+░░░░░░░░░░░░░░░░░░░░░░╚═╝░░╚═╝╚══════╝╚═╝░░╚═╝╚═════╝░╚═╝░░╚═╝╚═╝░░╚═╝░░░░░░░░░░░░░░░░
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+
+
+
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+░░░░                                                                            ░░░░░░
+░░░░ █ █▄░█ █▀▄ █▀▀ ▀▄▀ █▀▀ █▀█                                                 ░░░░░░
+░░░░ █ █░▀█ █▄▀ ██▄ █░█ ██▄ █▀▄                                                 ░░░░░░
+░░░░                                                                            ░░░░░░
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+
+```
+
+# IDL
+
+```txt
+type VesselInfo =
+ record {
+   description: text;
+   id: nat;
+   meta_keywords: vec text;
+   name: text;
+   recommanded_protocols: vec principal;
+   symbol: text;
+ };
+type ProtocolInfo =
+ record {
+   category: text;
+   created_by: vec principal;
+   description: text;
+   id: nat;
+   meta_sentences: vec record {
+                         id: text;
+                         sentence: text;
+                       };
+   name: text;
+   recommanded_vessels: vec principal;
+   tags: vec text;
+   title: text;
+ };
+type ProfileInfo =
+ record {
+   id: nat;
+   name: text;
+   "principal": principal;
+ };
+type ItemInfo =
+ record {
+   data: text;
+   id: nat;
+   uri: text;
+   vessel_id: nat;
+ };
+type Indexer =
+ service {
+   addItem: (ItemInfo) -> ();
+   addProfile: (ProfileInfo) -> ();
+   addProtocol: (ProtocolInfo) -> ();
+   addVessel: (VesselInfo) -> ();
+   deployToAlaska: () -> ();
+   dropItems: () -> () query;
+   dropProfiles: () -> () query;
+   dropProtocols: () -> () query;
+   dropVessels: () -> () query;
+   getItems: () -> (vec ItemInfo) query;
+   getProfiles: () -> (vec ProfileInfo) query;
+   getProtocols: () -> (vec ProtocolInfo) query;
+   getVessels: () -> (vec VesselInfo) query;
+   whoami: () -> (principal);
+ };
+service : (text) -> Indexer
+
+```
+
+## Getters
+
+## `getVessels`
+[-----------------]<br/>
+**@returns**    `T.VesselInfo` <br/>
+**@parameters** `()`
+
+## `getProtocols`
+[-----------------]<br/>
+**@returns**    `T.ProtocolInfo` <br/>
+**@parameters** `()`
+
+## `getProfiles`
+[-----------------]<br/>
+**@returns**    `T.ProfileInfo` <br/>
+**@parameters** `()`
+
+## `getItems`
+[-----------------]<br/>
+**@returns**    `T.ItemInfo` <br/>
+**@parameters** `()`
+
+
+## Setters
+
+## `dropVessels`
+[-----------------]<br/>
+**@returns**    `()` <br/>
+**@parameters** `()`
+
+## `dropProtocols`
+[-----------------]<br/>
+**@returns**    `()` <br/>
+**@parameters** `()`
+
+## `dropProfiles`
+[-----------------]<br/>
+**@returns**    `()` <br/>
+**@parameters** `()`
+
+## `dropItems`
+[-----------------]<br/>
+**@returns**    `()` <br/>
+**@parameters** `()`

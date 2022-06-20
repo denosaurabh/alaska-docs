@@ -1,0 +1,168 @@
+# Lending Registry
+
+`Address: [-------------]`
+
+```txt
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+░░░░░░░░░░░░░░░░░░░░░░░█████╗░██╗░░░░░░█████╗░░██████╗██╗░░██╗░█████╗░░░░░░░░░░░░░░░░░
+░░░░░░░░░░░░░░░░░░░░░░██╔══██╗██║░░░░░██╔══██╗██╔════╝██║░██╔╝██╔══██╗░░░░░░░░░░░░░░░░
+░░░░░░░░░░░░░░░░░░░░░░███████║██║░░░░░███████║╚█████╗░█████═╝░███████║░░░░░░░░░░░░░░░░
+░░░░░░░░░░░░░░░░░░░░░░██╔══██║██║░░░░░██╔══██║░╚═══██╗██╔═██╗░██╔══██║░░░░░░░░░░░░░░░░
+░░░░░░░░░░░░░░░░░░░░░░██║░░██║███████╗██║░░██║██████╔╝██║░╚██╗██║░░██║░░░░░░░░░░░░░░░░
+░░░░░░░░░░░░░░░░░░░░░░╚═╝░░╚═╝╚══════╝╚═╝░░╚═╝╚═════╝░╚═╝░░╚═╝╚═╝░░╚═╝░░░░░░░░░░░░░░░░
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+
+
+
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+░░░░                                                                              ░░░░
+░░░░ █░░ █▀▀ █▄░█ █▀▄ █ █▄░█ █▀▀   █▀█ █▀▀ █▀▀ █ █▀ ▀█▀ █▀█ █▄█                   ░░░░
+░░░░ █▄▄ ██▄ █░▀█ █▄▀ █ █░▀█ █▄█   █▀▄ ██▄ █▄█ █ ▄█ ░█░ █▀▄ ░█░                   ░░░░
+░░░░                                                                              ░░░░
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+
+```
+
+# IDL
+
+```txt
+type Time = int;
+type Loan =
+ record {
+   cleared: bool;
+   created_at: Time;
+   created_by: principal;
+   id: nat;
+   loan_for: principal;
+   metadata: text;
+   reason: text;
+   star: nat;
+   tx_id: nat;
+   updated_at: Time;
+   uri: text;
+ };
+type LendingRegistry =
+ service {
+   clearCredit: (ClearCredit) -> (LendId);
+   clearLoan: (ClearLoan) -> (LendId);
+   deployToAlaska: () -> ();
+   getCredit: (LendId) -> (opt Credit) query;
+   getLoan: (LendId) -> (opt Loan) query;
+   getProfileCreditScore: (principal) -> (float64) query;
+   getProfileCreditVSLoanStore: (principal) -> (float64) query;
+   getProfileCredits: (principal) -> (vec opt Credit) query;
+   getProfileLoanScore: (principal) -> (float64) query;
+   getProfileLoans: (principal) -> (vec opt Loan) query;
+   issueCredit: (IssueCredit) -> (LendId);
+   issueLoan: (IssueLoan) -> (LendId);
+   whoami: () -> (principal);
+ };
+type LendId = nat;
+type IssueLoan =
+ record {
+   created_by: principal;
+   loan_for: principal;
+   metadata: text;
+   reason: text;
+   star: nat;
+   tx_id: nat;
+   uri: text;
+ };
+type IssueCredit =
+ record {
+   credit_for: principal;
+   metadata: text;
+   reason: text;
+   star: nat;
+   tx_id: nat;
+   uri: text;
+ };
+type Credit =
+ record {
+   cleared: bool;
+   created_at: Time;
+   created_by: principal;
+   credit_for: principal;
+   id: nat;
+   metadata: text;
+   reason: text;
+   star: nat;
+   tx_id: nat;
+   updated_at: Time;
+   uri: text;
+ };
+type ClearLoan = record {id: nat;};
+type ClearCredit = record {id: nat;};
+service : (text) -> LendingRegistry
+
+```
+
+## Getters
+
+## `getCredit`
+
+Returns array of indexed protocols.<br/>
+**@returns** `?T.Credit`<br/>
+**@parameters** `(id: T.LendId)`
+
+## `getLoan`
+
+Returns array of indexed protocols.<br/>
+**@returns** `?T.Loan`<br/>
+**@parameters** `(id: T.LendId)`
+
+## `getProfileCredits`
+
+Returns array of indexed protocols.<br/>
+**@returns** `[?(T.Credit)]`<br/>
+**@parameters** `(p: Principal)`
+
+## `getProfileLoans`
+
+Returns array of indexed protocols.<br/>
+**@returns** `[?(T.Loan)]`<br/>
+**@parameters** `(p: Principal)`
+
+## `getProfileCreditScore`
+
+Returns array of indexed protocols.<br/>
+**@returns** `(p: Principal)`<br/>
+**@parameters** `Float`
+
+## `getProfileLoanScore`
+
+Returns array of indexed protocols.<br/>
+**@returns** `Float`<br/>
+**@parameters** `(p: Principal)`
+
+## `getProfileCreditVSLoanStore`
+
+Returns array of indexed protocols.<br/>
+**@returns** `Float`<br/>
+**@parameters** `(p: Principal)`
+
+## Setters
+
+## `issueCredit`
+
+Returns array of indexed protocols.<br/>
+**@returns** `T.LendId`<br/>
+**@parameters** `(credit_data: T.IssueCredit)`
+
+## `issueLoan`
+
+Returns array of indexed protocols.<br/>
+**@returns** `T.LendId`<br/>
+**@parameters** `(loan_data: T.IssueLoan)`
+
+## `clearCredit`
+
+Returns array of indexed protocols.<br/>
+**@returns** `T.LendId`<br/>
+**@parameters** `(data: T.ClearCredit)`
+
+## `clearLoan`
+
+Returns array of indexed protocols.<br/>
+**@returns** `T.LendId`<br/>
+**@parameters** `(data: T.ClearLoan)`

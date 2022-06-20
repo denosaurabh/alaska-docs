@@ -1,0 +1,141 @@
+# Vessel Registry
+
+`Address: [-------------]`
+
+```txt
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+░░░░░░░░░░░░░░░░░░░░░░░█████╗░██╗░░░░░░█████╗░░██████╗██╗░░██╗░█████╗░░░░░░░░░░░░░░░░░
+░░░░░░░░░░░░░░░░░░░░░░██╔══██╗██║░░░░░██╔══██╗██╔════╝██║░██╔╝██╔══██╗░░░░░░░░░░░░░░░░
+░░░░░░░░░░░░░░░░░░░░░░███████║██║░░░░░███████║╚█████╗░█████═╝░███████║░░░░░░░░░░░░░░░░
+░░░░░░░░░░░░░░░░░░░░░░██╔══██║██║░░░░░██╔══██║░╚═══██╗██╔═██╗░██╔══██║░░░░░░░░░░░░░░░░
+░░░░░░░░░░░░░░░░░░░░░░██║░░██║███████╗██║░░██║██████╔╝██║░╚██╗██║░░██║░░░░░░░░░░░░░░░░
+░░░░░░░░░░░░░░░░░░░░░░╚═╝░░╚═╝╚══════╝╚═╝░░╚═╝╚═════╝░╚═╝░░╚═╝╚═╝░░╚═╝░░░░░░░░░░░░░░░░
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+
+
+
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+░░░░                                                                             ░░░░░
+░░░░ █░█ █▀▀ █▀ █▀ █▀▀ █░░   █▀█ █▀▀ █▀▀ █ █▀ ▀█▀ █▀█ █▄█                        ░░░░░
+░░░░ ▀▄▀ ██▄ ▄█ ▄█ ██▄ █▄▄   █▀▄ ██▄ █▄█ █ ▄█ ░█░ █▀▄ ░█░                        ░░░░░
+░░░░                                                                             ░░░░░
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+
+```
+
+# IDL
+
+```txt
+type VesselRegistry =
+ service {
+   deployToAlaska: () -> ();
+   getVessel: (VesselId) -> (opt Vessel) query;
+   getVesselAddressById: (VesselId) -> (principal) query;
+   getVesselIDByAddress: (principal) -> (VesselId) query;
+   getVesselItemApprove: (VesselId, nat) -> (principal);
+   getVesselItemOwner: (VesselId, nat) -> (principal);
+   getVesselItems: (VesselId) -> (vec reserved);
+   getVessels: () -> (vec record {
+                            VesselId;
+                            Vessel;
+                          }) query;
+   indexVessel: (IndexVessel) -> (VesselId);
+   itemExists: (VesselId, nat) -> (bool);
+   vesselExists: (principal) -> (bool) query;
+   vesselItemExists: (VesselId, nat) -> (bool);
+   vesselItemTransfer: (VesselId, nat, principal, principal) -> (bool);
+   whoami: () -> (principal);
+ };
+type VesselInfo =
+ record {
+   description: text;
+   logo: text;
+   meta_keywords: vec text;
+   name: text;
+   recommanded_protocols: vec principal;
+   symbol: text;
+ };
+type VesselId = nat;
+type Vessel =
+ record {
+   address: principal;
+   history_address: principal;
+   id: nat;
+   indexed_at: Time;
+   info: VesselInfo;
+ };
+type Time = int;
+type IndexVessel = record {address: text;};
+service : (text) -> VesselRegistry
+
+```
+
+## Getters
+
+## `getVessels`
+
+Returns array of indexed protocols.<br/>
+**@returns** `[(T.VesselId, T.Vessel)]`<br/>
+**@parameters** `()`
+
+## `getVessel`
+
+Returns array of indexed protocols.<br/>
+**@returns** `?T.Vessel`<br/>
+**@parameters** `(id: T.VesselId)`
+
+## `getVesselAddressById`
+
+Returns array of indexed protocols.<br/>
+**@returns** `Principal`<br/>
+**@parameters** `(id: T.VesselId)`
+
+## `getVesselIDByAddress`
+
+Returns array of indexed protocols.<br/>
+**@returns** `T.VesselId`<br/>
+**@parameters** `(p: Principal)`
+
+## `getVesselItems`
+
+Returns array of indexed protocols.<br/>
+**@returns** `[Any]`<br/>
+**@parameters** `(vessel_id: T.VesselId)`
+
+## `getVesselItemApprove`
+
+Returns array of indexed protocols.<br/>
+**@returns** `Principal`<br/>
+**@parameters** `(vessel_id: T.VesselId, item_id: Nat)`
+
+## `vesselExists`
+
+Returns array of indexed protocols.<br/>
+**@returns** `Bool`<br/>
+**@parameters** `(vessel_id: Principal)`
+
+## `itemExists`
+
+Returns array of indexed protocols.<br/>
+**@returns** `Bool`<br/>
+**@parameters** `(vessel_id: T.VesselId, item_id: Nat)`
+
+## `vesselItemExists`
+
+Returns array of indexed protocols.<br/>
+**@returns** `Bool`<br/>
+**@parameters** `(vessel_id: T.VesselId, item_id: Nat)`
+
+## Setters
+
+## `indexVessel`
+
+Returns array of indexed protocols.<br/>
+**@returns** `T.VesselId`<br/>
+**@parameters** `(vessel: T.IndexVessel)`
+
+## `vesselItemTransfer`
+
+Returns array of indexed protocols.<br/>
+**@returns** `Bool`<br/>
+**@parameters** `(vessel_id: T.VesselId, item_id: Nat, from: Principal, to: Principal)`

@@ -1,0 +1,134 @@
+# Notification
+
+`Address: [-------------]`
+
+```txt
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+░░░░░░░░░░░░░░░░░░░░░░░█████╗░██╗░░░░░░█████╗░░██████╗██╗░░██╗░█████╗░░░░░░░░░░░░░░░░░
+░░░░░░░░░░░░░░░░░░░░░░██╔══██╗██║░░░░░██╔══██╗██╔════╝██║░██╔╝██╔══██╗░░░░░░░░░░░░░░░░
+░░░░░░░░░░░░░░░░░░░░░░███████║██║░░░░░███████║╚█████╗░█████═╝░███████║░░░░░░░░░░░░░░░░
+░░░░░░░░░░░░░░░░░░░░░░██╔══██║██║░░░░░██╔══██║░╚═══██╗██╔═██╗░██╔══██║░░░░░░░░░░░░░░░░
+░░░░░░░░░░░░░░░░░░░░░░██║░░██║███████╗██║░░██║██████╔╝██║░╚██╗██║░░██║░░░░░░░░░░░░░░░░
+░░░░░░░░░░░░░░░░░░░░░░╚═╝░░╚═╝╚══════╝╚═╝░░╚═╝╚═════╝░╚═╝░░╚═╝╚═╝░░╚═╝░░░░░░░░░░░░░░░░
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+
+
+
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+░░░░                                                                             ░░░░░
+░░░░  █▄░█ █▀█ ▀█▀ █ █▀▀ █ █▀▀ ▄▀█ ▀█▀ █ █▀█ █▄░█ █▀                             ░░░░░   
+░░░░  █░▀█ █▄█ ░█░ █ █▀░ █ █▄▄ █▀█ ░█░ █ █▄█ █░▀█ ▄█                             ░░░░░   
+░░░░                                                                             ░░░░░
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+
+```
+
+# IDL
+
+```txt
+type VesselPushNotification =
+ record {
+   data: NotificationData;
+   message: text;
+   notification_for: text;
+   title: text;
+ };
+type UserNotifications =
+ opt record {
+       UserNotification;
+       List;
+     };
+type UserNotification =
+ record {
+   at: int;
+   data: NotificationData;
+   from: NotificationFrom;
+   message: text;
+   notification_for: text;
+   title: text;
+ };
+type SocialPushNotification =
+ record {
+   data: NotificationData;
+   message: text;
+   notification_for: text;
+   title: text;
+ };
+type ProtocolPushNotification =
+ record {
+   data: NotificationData;
+   message: text;
+   notification_for: text;
+   title: text;
+ };
+type Notifications =
+ service {
+   deployToAlaska: () -> ();
+   getNotification: (principal) -> (opt UserNotifications) query;
+   getNotifications: (principal) -> (opt vec UserNotification) query;
+   pushNotificationByProtocol: (principal, ProtocolPushNotification) -> ();
+   pushNotificationBySocial: (principal, SocialPushNotification) -> ();
+   pushNotificationByVessel: (principal, VesselPushNotification) -> ();
+   readNotifications: () -> (opt UserNotifications);
+   whoami: () -> (principal);
+ };
+type NotificationFrom =
+ variant {
+   Profile;
+   Protocol;
+   Vessel;
+ };
+type NotificationData =
+ vec record {
+       text;
+       text;
+     };
+type List =
+ opt record {
+       UserNotification;
+       List;
+     };
+service : (text) -> Notifications
+
+
+```
+
+## Getters
+
+## `getNotifications`
+
+[-----------------]<br/>
+**@returns** `?[T.UserNotification]` <br/>
+**@parameters** `(p: Principal)`
+
+## `getNotification`
+
+[-----------------]<br/>
+**@returns** `?T.UserNotifications` <br/>
+**@parameters** `(p: Principal)`
+
+## `readNotifications`
+
+[-----------------]<br/>
+**@returns** `?T.UserNotifications` <br/>
+**@parameters** `()`
+
+## Setters
+
+## `pushNotificationByProtocol`
+
+[-----------------]<br/>
+**@returns** `()` <br/>
+**@parameters** `(p: Principal, notification_data: T.ProtocolPushNotification)`
+
+## `pushNotificationByVessel`
+
+[-----------------]<br/>
+**@returns** `()` <br/>
+**@parameters** `(p: Principal, notification_data: T.VesselPushNotification)`
+
+## `pushNotificationBySocial`
+
+[-----------------]<br/>
+**@returns** `()` <br/>
+**@parameters** `(p: Principal, notification_data: T.SocialPushNotification)`

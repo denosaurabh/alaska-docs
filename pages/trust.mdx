@@ -1,0 +1,91 @@
+# Trust
+
+`Address: [-------------]`
+
+```txt
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+░░░░░░░░░░░░░░░░░░░░░░░█████╗░██╗░░░░░░█████╗░░██████╗██╗░░██╗░█████╗░░░░░░░░░░░░░░░░░
+░░░░░░░░░░░░░░░░░░░░░░██╔══██╗██║░░░░░██╔══██╗██╔════╝██║░██╔╝██╔══██╗░░░░░░░░░░░░░░░░
+░░░░░░░░░░░░░░░░░░░░░░███████║██║░░░░░███████║╚█████╗░█████═╝░███████║░░░░░░░░░░░░░░░░
+░░░░░░░░░░░░░░░░░░░░░░██╔══██║██║░░░░░██╔══██║░╚═══██╗██╔═██╗░██╔══██║░░░░░░░░░░░░░░░░
+░░░░░░░░░░░░░░░░░░░░░░██║░░██║███████╗██║░░██║██████╔╝██║░╚██╗██║░░██║░░░░░░░░░░░░░░░░
+░░░░░░░░░░░░░░░░░░░░░░╚═╝░░╚═╝╚══════╝╚═╝░░╚═╝╚═════╝░╚═╝░░╚═╝╚═╝░░╚═╝░░░░░░░░░░░░░░░░
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+
+
+
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+░░░░                                                                              ░░░░
+░░░░  ▀█▀ █▀█ █░█ █▀ ▀█▀                                                          ░░░░
+░░░░  ░█░ █▀▄ █▄█ ▄█ ░█░                                                          ░░░░
+░░░░                                                                              ░░░░
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+
+```
+
+# IDL
+
+```txt
+type UserReputation =
+ record {
+   noOfInteractions: float64;
+   reputation: Reputation;
+ };
+type UserP = principal;
+type Trustworthy = bool;
+type Trust =
+ service {
+   addInteraction: (UserP, float64) -> (InteractionId);
+   deployToAlaska: () -> ();
+   getGlobalAverageReputation: () -> (GlobalAvgReputation);
+   getInteraction: (InteractionId) -> (opt Interaction);
+   getReputation: (principal) -> (UserReputation);
+   isTrustworthy: (principal) -> (Trustworthy);
+   whoami: () -> (principal);
+ };
+type Reputation = float64;
+type InteractionId = nat;
+type Interaction =
+ record {
+   by: UserP;
+   satisfaction: float64;
+   to: UserP;
+ };
+type GlobalAvgReputation = float64;
+service : (text) -> Trust
+
+```
+
+## Getters
+
+## `getGlobalAverageReputation`
+
+Returns array of indexed protocols.<br/>
+**@returns** `T.GlobalAvgReputation`<br/>
+**@parameters** `()`
+
+## `getReputation`
+
+Returns array of indexed protocols.<br/>
+**@returns** `T.UserReputation`<br/>
+**@parameters** `(p: Principal)`
+
+## `isTrustworthy`
+
+Returns array of indexed protocols.<br/>
+**@returns** `T.Trustworthy`<br/>
+**@parameters** `(p: Principal)`
+
+## `getInteraction`
+
+Returns array of indexed protocols.<br/>
+**@returns** `?T.Interaction`<br/>
+**@parameters** `(id: T.InteractionId)`
+
+## Setters
+
+## `addInteraction`
+
+Returns array of indexed protocols.<br/>
+**@returns** `(to: T.UserP, satisfaction: Float)`<br/>
+**@parameters** `T.InteractionId`

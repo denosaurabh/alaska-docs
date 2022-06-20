@@ -1,8 +1,14 @@
 {
-  "index": "Introduction",
-  "registries": "Registries",
+  "index": "What is Alaska",
+  "toc": "Table of Contents",
+  "addresses": "Addresses",
   "get-started": "Get Started",
-  "features": "Features",
-  "themes": "Themes",
-  "advanced": "Advanced"
+  "protocol": "Protocol",
+  "vessel": "Vessel",
+  "communication": "Shared Communication",
+  "artitecture": "Architecture",
+  "registries": "Registries",
+  "indexer": "Indexer",
+  "trust": "Trust",
+  "notification": "Notification"
 }
