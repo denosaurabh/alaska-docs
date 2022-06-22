@@ -97,19 +97,19 @@ service : (text) -> Notifications
 
 ## `getNotifications`
 
-[-----------------]<br/>
+Returns all Notifications of a User<br/>
 **@returns** `?[T.UserNotification]` <br/>
 **@parameters** `(p: Principal)`
 
 ## `getNotification`
 
-[-----------------]<br/>
+SAME AD ABOVE<br/>
 **@returns** `?T.UserNotifications` <br/>
 **@parameters** `(p: Principal)`
 
 ## `readNotifications`
 
-[-----------------]<br/>
+Read & clear all Notifications of a User<br/>
 **@returns** `?T.UserNotifications` <br/>
 **@parameters** `()`
 
@@ -117,18 +117,18 @@ service : (text) -> Notifications
 
 ## `pushNotificationByProtocol`
 
-[-----------------]<br/>
+Push Notification for user by a Protocol<br/>
 **@returns** `()` <br/>
 **@parameters** `(p: Principal, notification_data: T.ProtocolPushNotification)`
 
 ## `pushNotificationByVessel`
 
-[-----------------]<br/>
+Push Notification for user by a Vessel<br/>
 **@returns** `()` <br/>
 **@parameters** `(p: Principal, notification_data: T.VesselPushNotification)`
 
 ## `pushNotificationBySocial`
 
-[-----------------]<br/>
+Push Notification for user by another Profile<br/>
 **@returns** `()` <br/>
 **@parameters** `(p: Principal, notification_data: T.SocialPushNotification)`
