@@ -8,6 +8,7 @@
   "transaction": "Transaction",
   "artitecture": "Artitecture",
   "communication": "Shared Communication",
+  "alaska-indexer": "Alaska Indexer",
   "registries": "Registries",
   "indexer": "Indexer",
   "trust": "Trust",
