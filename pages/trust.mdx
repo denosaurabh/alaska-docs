@@ -60,25 +60,25 @@ service : (text) -> Trust
 
 ## `getGlobalAverageReputation`
 
-Returns array of indexed protocols.<br/>
+Returns Global Average Reputation amoung users.<br/>
 **@returns** `T.GlobalAvgReputation`<br/>
 **@parameters** `()`
 
 ## `getReputation`
 
-Returns array of indexed protocols.<br/>
+Returns Reputation of a user.<br/>
 **@returns** `T.UserReputation`<br/>
 **@parameters** `(p: Principal)`
 
 ## `isTrustworthy`
 
-Returns array of indexed protocols.<br/>
+Returns Trustworthiness of a user.<br/>
 **@returns** `T.Trustworthy`<br/>
 **@parameters** `(p: Principal)`
 
 ## `getInteraction`
 
-Returns array of indexed protocols.<br/>
+Returns an indexed Interaction for Reputation.<br/>
 **@returns** `?T.Interaction`<br/>
 **@parameters** `(id: T.InteractionId)`
 
@@ -86,6 +86,6 @@ Returns array of indexed protocols.<br/>
 
 ## `addInteraction`
 
-Returns array of indexed protocols.<br/>
+Add an Interaction for Reputation.<br/>
 **@returns** `(to: T.UserP, satisfaction: Float)`<br/>
 **@parameters** `T.InteractionId`
