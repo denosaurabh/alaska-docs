@@ -1,12 +1,13 @@
 export default {
-  github: 'https://github.com/alaska-protocol/alaska-protocol',
-  docsRepositoryBase: 'https://github.com/alaska-protocol/alaska-protocol/blob/master',
+  github: 'https://github.com/alaska-docs/alaska-docs',
+  docsRepositoryBase: 'https://github.com/alaska-docs/alaska-docs/blob/main',
   titleSuffix: ' – Alaska',
   logo: (
     <>
       <span className="mr-2 font-extrabold hidden md:inline">Alaska</span>
       <span className="text-gray-600 font-normal hidden md:inline">
-        Idea for a Next evolution of Collaborative Consumption & Peer-to-Peer sharing using Internet Computer blockchain.
+        Idea for a Next evolution of Collaborative Consumption & Peer-to-Peer
+        sharing using Internet Computer blockchain.
       </span>
     </>
   ),

@@ -101,43 +101,43 @@ service : (text) -> LendingRegistry
 
 ## `getCredit`
 
-Returns array of indexed protocols.<br/>
+Returns a Credit with Specific ID.<br/>
 **@returns** `?T.Credit`<br/>
 **@parameters** `(id: T.LendId)`
 
 ## `getLoan`
 
-Returns array of indexed protocols.<br/>
+Returns a Loan with specific ID.<br/>
 **@returns** `?T.Loan`<br/>
 **@parameters** `(id: T.LendId)`
 
 ## `getProfileCredits`
 
-Returns array of indexed protocols.<br/>
+Returns all Credits of a User.<br/>
 **@returns** `[?(T.Credit)]`<br/>
 **@parameters** `(p: Principal)`
 
 ## `getProfileLoans`
 
-Returns array of indexed protocols.<br/>
+Returns all Loans of a USer.<br/>
 **@returns** `[?(T.Loan)]`<br/>
 **@parameters** `(p: Principal)`
 
 ## `getProfileCreditScore`
 
-Returns array of indexed protocols.<br/>
+Returns a User Credit score.<br/>
 **@returns** `(p: Principal)`<br/>
 **@parameters** `Float`
 
 ## `getProfileLoanScore`
 
-Returns array of indexed protocols.<br/>
+Returns a User Loan score.<br/>
 **@returns** `Float`<br/>
 **@parameters** `(p: Principal)`
 
 ## `getProfileCreditVSLoanStore`
 
-Returns array of indexed protocols.<br/>
+Returns a divide of a User Loan & Credit Score.<br/>
 **@returns** `Float`<br/>
 **@parameters** `(p: Principal)`
 
@@ -145,24 +145,24 @@ Returns array of indexed protocols.<br/>
 
 ## `issueCredit`
 
-Returns array of indexed protocols.<br/>
+Create a Credit for a User.<br/>
 **@returns** `T.LendId`<br/>
 **@parameters** `(credit_data: T.IssueCredit)`
 
 ## `issueLoan`
 
-Returns array of indexed protocols.<br/>
+Create a User for a User.<br/>
 **@returns** `T.LendId`<br/>
 **@parameters** `(loan_data: T.IssueLoan)`
 
 ## `clearCredit`
 
-Returns array of indexed protocols.<br/>
+Clear a Credit for a User.<br/>
 **@returns** `T.LendId`<br/>
 **@parameters** `(data: T.ClearCredit)`
 
 ## `clearLoan`
 
-Returns array of indexed protocols.<br/>
+Clear a Loan for a User.<br/>
 **@returns** `T.LendId`<br/>
 **@parameters** `(data: T.ClearLoan)`
