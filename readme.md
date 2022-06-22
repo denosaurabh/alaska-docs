@@ -1,12 +1,12 @@
 # [Alaska](https://alaska.vercel.app)
 
-_Warning: this project is not production ready, API might change without notice._
+_The Alaska is still in Prototype & Ideation stage, you will find missing documentation and many things will not work as expected._
 
 **Alaska** is idea for the next evolution of Collaborative Consumption & Peer-to-Peer sharing using Internet Computer blockchain.
 
 ![](/public/demo.png)
 
-![](https://www.youtube.com/watch?v=KYcFQ8QTA7A)
+## [Demo Link](https://www.youtube.com/watch?v=KYcFQ8QTA7A)
 
 ## Submission
 
