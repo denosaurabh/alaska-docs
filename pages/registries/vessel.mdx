@@ -74,55 +74,56 @@ service : (text) -> VesselRegistry
 
 ## `getVessels`
 
-Returns array of indexed protocols.<br/>
+Returns array of indexed Vessels.<br/>
 **@returns** `[(T.VesselId, T.Vessel)]`<br/>
 **@parameters** `()`
 
 ## `getVessel`
 
-Returns array of indexed protocols.<br/>
+Returns Vessel that matches the ID or null if not found.<br/>
 **@returns** `?T.Vessel`<br/>
 **@parameters** `(id: T.VesselId)`
 
 ## `getVesselAddressById`
 
-Returns array of indexed protocols.<br/>
+Returns Vessel's Address that matches the ID.<br/>
 **@returns** `Principal`<br/>
 **@parameters** `(id: T.VesselId)`
 
 ## `getVesselIDByAddress`
 
-Returns array of indexed protocols.<br/>
+Returns Vessel's ID that matches the Address/Principal.<br/>
 **@returns** `T.VesselId`<br/>
 **@parameters** `(p: Principal)`
 
 ## `getVesselItems`
 
-Returns array of indexed protocols.<br/>
+Returns items in a vessel.<br/>
 **@returns** `[Any]`<br/>
 **@parameters** `(vessel_id: T.VesselId)`
+**@alpha**
 
 ## `getVesselItemApprove`
 
-Returns array of indexed protocols.<br/>
+Returns the Principal if item is approve to any Principal.<br/>
 **@returns** `Principal`<br/>
 **@parameters** `(vessel_id: T.VesselId, item_id: Nat)`
 
 ## `vesselExists`
 
-Returns array of indexed protocols.<br/>
+Returns true if the Vessel exists with the given VesselID.<br/>
 **@returns** `Bool`<br/>
 **@parameters** `(vessel_id: Principal)`
 
 ## `itemExists`
 
-Returns array of indexed protocols.<br/>
+Returns true if the items exists with the given VesselID and ItemID.<br/>
 **@returns** `Bool`<br/>
 **@parameters** `(vessel_id: T.VesselId, item_id: Nat)`
 
 ## `vesselItemExists`
 
-Returns array of indexed protocols.<br/>
+SAME AS ABOVE FUNCTION.<br/>
 **@returns** `Bool`<br/>
 **@parameters** `(vessel_id: T.VesselId, item_id: Nat)`
 
@@ -130,7 +131,7 @@ Returns array of indexed protocols.<br/>
 
 ## `indexVessel`
 
-Returns array of indexed protocols.<br/>
+Let you index your own Vessel.<br/>
 **@returns** `T.VesselId`<br/>
 **@parameters** `(vessel: T.IndexVessel)`
 
@@ -139,3 +140,4 @@ Returns array of indexed protocols.<br/>
 Returns array of indexed protocols.<br/>
 **@returns** `Bool`<br/>
 **@parameters** `(vessel_id: T.VesselId, item_id: Nat, from: Principal, to: Principal)`
+**@alpha**

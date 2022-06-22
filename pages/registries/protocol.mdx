@@ -91,38 +91,35 @@ Returns array of indexed protocols.<br/>
 
 
 ## `getProtocolByTokenID` 
-Returns array of indexed protocols.<br/>
+Returns Protocol that matches the ID or null if not found.<br/>
 **@returns**    `?T.Protocol`<br/>
 **@parameters** `(id: T.TokenId)`
 
 ## `getProtocolByName` 
-Returns array of indexed protocols.<br/>
+Returns Protocol that matches the name or null if not found.<br/>
 **@returns**    `?T.Protocol`<br/>
 **@parameters** `(name: Text)`
 
 ## `getProtocolByPrincipal` 
-Returns array of indexed protocols.<br/>
+Returns Protocol that matches the Principal or null if not found.<br/>
 **@returns**    `?T.Protocol`<br/>
 **@parameters** `(p: Principal)`
 
 ## `protocolExists` 
-Returns array of indexed protocols.<br/>
+Returns true if the protocol exists with the given Principal.<br/>
 **@returns**    `Bool`<br/>
 **@parameters** `(p: Principal)`
 
 ## `pickProtocol` 
-Returns array of indexed protocols.<br/>
+COMING SOON.<br/>
 **@returns**    `T.Protocol`<br/>
 **@parameters** `(id: T.TokenId)`
-
-## `publishProtocol` 
-Returns array of indexed protocols.<br/>
-**@returns**    `?T.Protocol`<br/>
-**@parameters** `(p: T.PublishProtocol)`
 
 ## Setters
 
 ## `publishProtocol` 
-Returns array of indexed protocols.<br/>
+Let you index your own Protocol.<br/>
 **@returns**    `?T.Protocol`<br/>
 **@parameters** `(p: T.PublishProtocol)`
+**@note** Should match the type properly. 
+**@update** WILL NOT WORK, OUTDATED TYPE, check the repository if you have
